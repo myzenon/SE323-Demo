@@ -4,6 +4,7 @@ import model.Item;
 import model.impl.*;
 import view.ConsoleMenu;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class GameController {
     private int menuState = 0;
     public GameController(){
     	prompt = new ConsoleMenu();
-    	gardenBed = new GardenBed();
+    	gardenBed = new GardenBed(10);
     	bag = new Bag();
     	//test mock, no shop
     	bag.addSeed(new Seed("Mango",new Plant("Mango Tree",3,3,3)));
@@ -44,12 +45,15 @@ public class GameController {
             		//water selected plant
     				menuState = in.nextInt();
             		waterPlant(gardenBed.getPlants().get(menuState-1));
-
-            		
                      break;
-            case 4:
+            case 4:	List<Plant> plants = viewPlantsWithFruit();
+            		prompt.harvestPlant(plants);
+            		menuState = in.nextInt();
+            			harvestFruits(plants,menuState);
                      break;
-            case 5:  
+                     
+            case 5:  prompt.viewInventory(bag);
+            		menuState = in.nextInt();
                      break;
             case 6: sleep();
             		prompt.sleep();
@@ -58,13 +62,15 @@ public class GameController {
                      
         }
         	
-    	}while(menuState != 7);
+    	}while(menuState != 99);
  
     }
 
     public boolean plantSeed(Seed seed) {
+    	if(gardenBed.getPlants().size()<gardenBed.getCapacity()){
     	gardenBed.addPlant(seed.getPlant()); 
-        return true;
+    	}
+    	return true;
     }
 
     public boolean waterPlant(Plant plant) {
@@ -72,16 +78,24 @@ public class GameController {
     	return true;
     }
 
-    public List<Plant> viewPlantsWithFriut() {
-        return null;
+    public List<Plant> viewPlantsWithFruit() {
+    	List<Plant> plants = new ArrayList<Plant>();
+        for(int i = 0;i < gardenBed.getPlants().size();i++){
+        	if(gardenBed.getPlants().get(i).getFruits().size()!=0){//fruits is available
+        		plants.add(gardenBed.getPlants().get(i));
+        	}
+        }
+    	return plants;
     }
 
-    public void harvestFruits(List<Fruit> fruits, Plant plant) {
-
-    }
-
-    public List<Item> getInventory() {
-        return null;
+    public void harvestFruits(List<Plant> plants, int index) {
+    	if(index<plants.size()){
+    		for(int i = 0 ; i <plants.get(index).getFruits().size();i++ ){
+    			bag.addFruit((plants.get(index).getFruits().get(i)));
+    		}
+    		plants.get(index).harvested();
+    	}
+ 
     }
 
     public void sleep() {

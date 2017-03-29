@@ -1,5 +1,8 @@
 package model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Growable;
 
 public class Plant implements Growable {
@@ -8,6 +11,7 @@ private int health; // main health
 private int max_water; // max - armor
 private int water; // armor - watering maxes water
 private Fruit fruit;
+private List<Fruit> fruits = new ArrayList<Fruit>();
 
 private String[] age_types = {"Seed", "Seedling", "Mature",
 		"HarvestReady","Dead"};
@@ -62,8 +66,25 @@ private int age = 0;
 		// TODO Auto-generated method stub
 		age++;
 	}
+	public void harvested(){
+		fruits.clear();
+	}
 	public void produce(){
-		
+		for(int i = 0 ; i < health;i++){
+			fruits.add(new Fruit(name,0+water));
+		}
+	}
+	public List<Fruit> getFruits() {
+		return fruits;
+	}
+	public void setFruits(List<Fruit> fruits) {
+		this.fruits = fruits;
+	}
+	public String[] getAge_types() {
+		return age_types;
+	}
+	public void setAge_types(String[] age_types) {
+		this.age_types = age_types;
 	}
 
 

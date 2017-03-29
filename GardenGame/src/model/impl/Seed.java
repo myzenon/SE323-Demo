@@ -1,8 +1,9 @@
 package model.impl;
 
+import model.Item;
 import model.Plantable;
 
-public class Seed implements Plantable{
+public class Seed implements Plantable,Item{
 	private String name;
 	private Plant plant;
 	public Seed(String name,Plant plant){

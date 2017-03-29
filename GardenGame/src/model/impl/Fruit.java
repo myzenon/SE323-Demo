@@ -1,9 +1,16 @@
 package model.impl;
 
-public class Fruit {
+import model.Item;
+
+public class Fruit implements Item{
 	private String name;
+	private String[] size_type = {"Small","Medium","Large","XLarge"};
 	private int size;
 	
+	public Fruit(String name, int size){
+	this.name = name;
+	this.size = size;
+	}
 	public String getName() {
 		return name;
 	}

@@ -3,6 +3,7 @@ package view;
 
 import java.util.List;
 
+import model.impl.Bag;
 import model.impl.Plant;
 import model.impl.Seed;
 
@@ -43,8 +44,25 @@ public class ConsoleMenu {
 					+" WaterLevel:"+plants.get(i).getWater());
 		}
 	};
-	public void harvestPlant() {};
-	public void viewInventory() {};
+	public void harvestPlant(List<Plant> plants) {
+		System.out.println("--Plants available for harvest--");
+		for(int i =0; i < plants.size();i++){
+			System.out.println((i+1)+"."+plants.get(i).getName());
+		}
+		System.out.println("any number to continue..");	
+	};
+	public void viewInventory(Bag bag) {
+		System.out.println("--Seeds in the bag--");
+		for(int i =0; i < bag.getSeeds().size();i++){
+			System.out.println((i+1)+"."+bag.getSeeds().get(i).getName());
+		}
+		System.out.println("--Fruits in the bag--");
+		for(int i =0; i < bag.getFruits().size();i++){
+			System.out.println((i+1)+"."+bag.getFruits().get(i).getName());
+		}
+		System.out.println("any number to continue..");	
+		
+	};
 	public void sleep() {
 		System.out.println("A long hardworking day have past!");	
 		System.out.println("any number to continue..");	

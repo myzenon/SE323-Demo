@@ -10,7 +10,7 @@ public class GameController {
     private GardenBed gardenBed;
     private Bag bag;
 
-    public List<Plant> getPlants() {
+    public Plant[][] getPlants() {
         return null;
     }
 
@@ -32,11 +32,11 @@ public class GameController {
 
     public void waterPlants() {}
 
-    public List<Plant> viewFriuts() {
+    public List<Plant> viewPlantsWithFriut() {
         return null;
     }
 
-    public void harvestFruits(List<Plant> plants) {
+    public void harvestFruits(List<Fruit> fruits, Plant plant) {
 
     }
 

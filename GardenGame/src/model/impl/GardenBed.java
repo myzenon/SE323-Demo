@@ -1,15 +1,22 @@
 package model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GardenBed {
 
-    private Plant[][] plants = new Plant[2][5];
+    private List plants = new ArrayList<Plant>();
 
-    public Plant[][] getPlants() {
+    public List<Plant> getPlants() {
         return plants;
     }
 
-    public void addPlant(Plant plant) {}
+    public void addPlant(Plant plant) {
+    	plants.add(plant);
+    }
 
-    public void removePlant(int position) {}
+    public void removePlant(int position) {
+    	plants.remove(position);
+    }
 
 }

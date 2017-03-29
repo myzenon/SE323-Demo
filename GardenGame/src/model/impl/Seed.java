@@ -4,7 +4,11 @@ import model.Plantable;
 
 public class Seed implements Plantable{
 	private String name;
-	
+	private Plant plant;
+	public Seed(String name,Plant plant){
+		this.name = name;
+		this.plant = plant;
+	}
 	public String getName() {
 		return name;
 	}
@@ -13,5 +17,8 @@ public class Seed implements Plantable{
 	}
 	public void plant(){
 		
+	}
+	public Plant getPlant(){
+		return plant;
 	}
 }

@@ -1,8 +1,8 @@
 package edu.camt323.act1.model.impl;
 
-import edu.camt323.act1.model.Character;
+import edu.camt323.act1.model.iCharacter;
 
-public class Monster implements Character {
+public class Monster implements iCharacter {
 	private String name = "";
 	private int attackPoints = 0;
 	private int speedPoints = 0;

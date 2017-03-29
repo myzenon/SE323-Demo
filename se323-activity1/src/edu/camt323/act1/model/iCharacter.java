@@ -1,6 +1,6 @@
 package edu.camt323.act1.model;
 
-public interface Character {
+public interface iCharacter {
 
 	
 	public void setName(String name);

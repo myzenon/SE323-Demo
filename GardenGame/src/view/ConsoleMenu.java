@@ -24,7 +24,8 @@ public class ConsoleMenu {
 			System.out.println((i+1)+"."+plants.get(i).getName());
 			System.out.println(" Health:"+plants.get(i).getHealth()+
 					" WaterLevel:"+plants.get(i).getWater()+
-					" Age:"+plants.get(i).getAge());
+					" Age:"+plants.get(i).getAge()+
+					" Days until next phase:"+plants.get(i).getDaysUntilNextPhase());
 	
 		}
 		System.out.println("any number to continue..");	

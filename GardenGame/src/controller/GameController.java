@@ -19,9 +19,9 @@ public class GameController {
     	gardenBed = new GardenBed(10);
     	bag = new Bag();
     	//test mock, no shop
-    	bag.addSeed(new Seed("Mango",new Plant("Mango Tree",3,3,3)));
-    	bag.addSeed(new Seed("Apple",new Plant("Apple Tree",3,3,3)));;
-    	bag.addSeed(new Seed("Orange",new Plant("Orange Tree",3,3,3)));
+    	bag.addSeed(new Seed("Mango",new Plant("Mango Tree",3,3,3,2)));
+    	bag.addSeed(new Seed("Apple",new Plant("Apple Tree",3,3,3,2)));;
+    	bag.addSeed(new Seed("Orange",new Plant("Orange Tree",3,3,3,2)));
     	
     	in = new Scanner(System.in);
 
@@ -55,7 +55,8 @@ public class GameController {
             case 5:  prompt.viewInventory(bag);
             		menuState = in.nextInt();
                      break;
-            case 6: sleep();
+            case 6: 
+            		sleep();
             		prompt.sleep();
             		menuState = in.nextInt();
                      break;
@@ -101,6 +102,7 @@ public class GameController {
     public void sleep() {
     	
     	for(int i = 0 ;i<gardenBed.getPlants().size();i++){
+    		gardenBed.getPlants().get(i).ageAday();
     		if(gardenBed.getPlants().get(i).getWater()>0){//minus from water armor
     			gardenBed.getPlants().get(i).setWater(
     					gardenBed.getPlants().get(i).getWater()-1);
@@ -113,6 +115,7 @@ public class GameController {
     				
     			}
     		}
+    		
     	}
     }
 

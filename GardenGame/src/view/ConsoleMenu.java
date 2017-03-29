@@ -20,8 +20,11 @@ public class ConsoleMenu {
 	public void viewPlants(List<Plant> plants) {
 		System.out.println("--Your Garden Bed--");
 		for(int i= 0 ; i < plants.size() ;i++){
-			System.out.println((i+1)+"."+plants.get(i).getName());	
-		
+			System.out.println((i+1)+"."+plants.get(i).getName());
+			System.out.println(" Health:"+plants.get(i).getHealth()+
+					" WaterLevel:"+plants.get(i).getWater()+
+					" Age:"+plants.get(i).getAge());
+	
 		}
 		System.out.println("any number to continue..");	
 	};
@@ -32,8 +35,18 @@ public class ConsoleMenu {
 		}
 	};
 	
-	public void waterPlant() {};
+	public void waterPlant(List<Plant> plants) {
+		System.out.println("--Pick a plant to water--");
+		for(int i= 0 ; i < plants.size() ;i++){
+			System.out.println((i+1)+"."+plants.get(i).getName()
+					+" Health:"+plants.get(i).getHealth()
+					+" WaterLevel:"+plants.get(i).getWater());
+		}
+	};
 	public void harvestPlant() {};
 	public void viewInventory() {};
-	public void sleep() {};
+	public void sleep() {
+		System.out.println("A long hardworking day have past!");	
+		System.out.println("any number to continue..");	
+	};
 }

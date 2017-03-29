@@ -9,7 +9,7 @@ private int water; // armor - watering maxes water
 private Fruit fruit;
 
 
-public enum age {Seed, Seedling, Mature, Dead}
+public enum age {Seed, Seedling, Mature,HarvestReady,Dead}
 	
 	@Override
 	public void grow() {

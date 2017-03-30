@@ -11,6 +11,9 @@ public class Fruit implements Item{
 	this.name = name;
 	this.size = size;
 	}
+	public String getNameSize(){
+		return name+"("+size_type[size]+")";
+	}
 	public String getName() {
 		return name;
 	}

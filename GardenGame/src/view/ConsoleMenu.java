@@ -63,6 +63,11 @@ public class ConsoleMenu {
                     " WaterLevel:" + plants.get(i).getWater() +
                     " Age:" + plants.get(i).getAge() +
                     " Days until next phase:" + plants.get(i).getDaysUntilNextPhase());
+            System.out.print(" Fruits [");
+            for(int k = 0 ;k < plants.get(i).getFruits().size();k++){
+            	System.out.print(" "+plants.get(i).getFruits().get(k).getNameSize());
+            }
+            System.out.println("]");
 
         }
 		System.out.println("any number to continue..");
@@ -106,7 +111,9 @@ public class ConsoleMenu {
         }
         System.out.println("any number to continue..");
         menuState = in.nextInt();
-        gameController.harvestFruits(plants, menuState);
+        if(!plants.isEmpty()){
+        	gameController.harvestFruits(plants.get(menuState-1));
+        }
     }
 
 
@@ -119,7 +126,7 @@ public class ConsoleMenu {
         }
         System.out.println("--Fruits in the bag--");
         for (int i = 0; i < bag.getFruits().size(); i++) {
-            System.out.println((i + 1) + "." + bag.getFruits().get(i).getName());
+            System.out.println((i + 1) + "." + bag.getFruits().get(i).getNameSize());
         }
         System.out.println("any number to continue..");
         menuState = in.nextInt();
@@ -130,8 +137,7 @@ public class ConsoleMenu {
     public void sleep() {
         gameController.sleep();
         System.out.println("A long hardworking day have past!");
-        System.out.println("any number to continue..");
-        menuState = in.nextInt();
+
     }
 
 }

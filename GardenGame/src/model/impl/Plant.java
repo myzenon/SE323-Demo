@@ -24,19 +24,20 @@ public int getDays_to_age() {
 public void setDays_to_age(int days_to_age) {
 	this.days_to_age = days_to_age;
 }
-private Fruit fruit;
+private String fruit_type;
 private List<Fruit> fruits = new ArrayList<Fruit>();
 
 private String[] age_types = {"Seed", "Seedling", "Mature",
 		"Sprouting","HarvestReady"};
 private int age = 0;	
 
-	public Plant(String name,int health, int max_water, int water,int days_before_growing){
+	public Plant(String name,String fruit_type,int health, int max_water,int days_before_growing){
 		this.name = name;
 		this.health =health;
 		this.max_water = max_water;
-		this.water = water;
+		this.water = max_water;
 		this.days_before_growing = days_before_growing;
+		this.fruit_type = fruit_type;
 		//this.fruit = fruit;
 	}
 	public int getHealth() {
@@ -57,14 +58,15 @@ private int age = 0;
 	public void setWater(int water) {
 		this.water = water;
 	}
-	public Fruit getFruit() {
-		return fruit;
+
+	public String getFruit_type() {
+		return fruit_type;
 	}
-	public void setFruit(Fruit fruit) {
-		this.fruit = fruit;
+	public void setFruit_type(String fruit_type) {
+		this.fruit_type = fruit_type;
 	}
 	public String getAge() {
-		return age_types[age];
+		return "("+age+")"+age_types[age];
 	}
 	public void setAge(int age) {
 		this.age = age;
@@ -78,14 +80,24 @@ private int age = 0;
 	@Override
 	public void grow() {
 		// TODO Auto-generated method stub
-		age++;
+		if(age<age_types.length-1){
+			if(days_to_age<days_before_growing-1){
+				days_to_age++;
+			}else{
+				age++;
+				days_to_age = 0;
+			}
+			if(age==4){
+				produce();
+			}
+		}
 	}
 	public void harvested(){
 		fruits.clear();
 	}
 	public void produce(){
 		for(int i = 0 ; i < health;i++){
-			fruits.add(new Fruit(name,0+water));
+			fruits.add(new Fruit(fruit_type,0+water));
 		}
 	}
 	public List<Fruit> getFruits() {
@@ -100,18 +112,9 @@ private int age = 0;
 	public void setAge_types(String[] age_types) {
 		this.age_types = age_types;
 	}
-	public void ageAday(){
-		if(age<age_types.length){
-			if(days_to_age<days_before_growing){
-				days_to_age++;
-			}else{
-				age++;
-				days_to_age = 0;
-			}
-		}
-	}
+
 	public int getDaysUntilNextPhase(){
-		return days_before_growing-days_to_age+1;
+		return days_before_growing-days_to_age;
 	}
 
 }
